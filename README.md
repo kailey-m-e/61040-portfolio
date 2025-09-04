@@ -5,7 +5,7 @@ Here's a collection of my 6.1040 work!
 # About Me
 I'm Kailey Epstein, a junior at MIT studying Computer Science and Engineering.
 
-This is a link to my [LinkedIn profile](www.linkedin.com/in/kailey-epstein-a85894280)!
+This is a link to my [LinkedIn profile](https://www.linkedin.com/in/kailey-epstein-a85894280)!
 
 Fun facts:
 1. I'm on the MIT Dive team!
