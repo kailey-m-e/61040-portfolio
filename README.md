@@ -1,12 +1,18 @@
 # 6.1040 Portfolio
 
+Here's a collection of my 6.1040 work!
+
 # About Me
-I'm Kailey Epstein, a junior at MIT studying Computer Science and Engineering. Here's what I've been working on!
+I'm Kailey Epstein, a junior at MIT studying Computer Science and Engineering.
+
+This is a link to my [LinkedIn profile](www.linkedin.com/in/kailey-epstein-a85894280)!
 
 Fun facts:
 1. I'm on the MIT Dive team!
 2. I have a pet tuxedo cat named Bean!
 3. My family goes to LBI ever summer!
+
+![Headshot of Kailey Epstein](https://media.licdn.com/dms/image/v2/D4E03AQHd40UkmyJrPA/profile-displayphoto-crop_800_800/B4EZjejXy4HoAI-/0/1756080471863?e=1759968000&v=beta&t=Roj8Hnyx36-fqes_Sj8lrUPmXNeRXglKtPQYm4kwT9A)
 
 # Table of Contents
 [Link to Assignment 1](assignments/assignment1.md)
