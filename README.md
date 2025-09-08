@@ -15,4 +15,4 @@ Fun facts:
 ![MIT campus](https://www.trolleytours.com/wp-content/uploads/2016/05/boston-mit.jpg)
 
 # Table of Contents
-[Link to Assignment 1](assignments/assignment1.md)
+[Assignment 1: Problem Framing](assignments/assignment1.md)
