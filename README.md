@@ -15,5 +15,5 @@ Fun facts:
 ![MIT campus](https://www.trolleytours.com/wp-content/uploads/2016/05/boston-mit.jpg)
 
 # Table of Contents
-[Assignment 1: Problem Framing](assignments/assignment1.md)
-[Problem Set 1: Conecept Design](assignments/ps1.md)
+[Assignment 1: Problem Framing](assignments/assignment1.md) \
+[Problem Set 1: Concept Design](assignments/ps1.md)

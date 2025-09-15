@@ -1,4 +1,4 @@
-# Problem Set: Concept Design
+# Problem Set 1: Concept Design
 
 ## 1) Reading a Concept
 
