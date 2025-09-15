@@ -16,3 +16,4 @@ Fun facts:
 
 # Table of Contents
 [Assignment 1: Problem Framing](assignments/assignment1.md)
+[Exercise 1: Conecept Design](assignments/exercise1.md)
