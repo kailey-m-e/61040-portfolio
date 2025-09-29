@@ -20,10 +20,10 @@
 
 <!-- A stakeholder list, with a name for each kind of stakeholder, and a sentence explaining their role (if any) in the problem. -->
 
-- Traveler - The Traveler is someone who wishes to track their travels and benefits from creating a digital documentation of memories.
-- Partner - The Partner is someone who usually accompanies the Traveler on their trips and benefits from the Traveler preserving their shared memories.
-- Friend - The Friend is someone who digitally follows along with the Traveler's adventures, allowing them to share their experiences, and who may also enjoy posting their own trips.
-- Developer - The Developer has stake in another travel recording app and is harmed by the competition of users choosing this digital travel tracking solution over theirs.
+- **Traveler** - The Traveler is someone who wishes to track their travels and benefits from creating a digital documentation of memories.
+- **Partner** - The Partner is someone who usually accompanies the Traveler on their trips and benefits from the Traveler preserving their shared memories.
+- **Friend** - The Friend is someone who digitally follows along with the Traveler's adventures, allowing them to share their experiences, and who may also enjoy posting their own trips.
+- **Developer** - The Developer has stake in another travel recording app and is harmed by the competition of users choosing this digital travel tracking solution over theirs.
 
 ### Evidence & Comparables
 
@@ -92,39 +92,7 @@ The concept specifications, written in the standard form.
 &nbsp; authenticate(username: String, password: String): (user: User) \
 &nbsp;&nbsp;&nbsp; **requires** username matches a user with the given password
 
-### 2) Friending
-
-**concept** Friending [User]
-
-**purpose** allows users to share special permissions with other users
-
-**principle** after a user requests to be another user's friend, that user can accept to create a friendship; the friendship can then be validated for mutual, special permissions between the friends; if at any point in the process one of the friends ends the friendship, all special permissions are lost between the users
-
-**state**
-
-&nbsp; a set of Users with \
-&nbsp;&nbsp;&nbsp; an outgoingFriendRequests set of Users \
-&nbsp;&nbsp;&nbsp; an incomingFriendRequests set of Users \
-&nbsp;&nbsp;&nbsp; a friends set of Users
-
-**actions**
-
-&nbsp; requestFriend(user: User, friend: User) \
-&nbsp;&nbsp;&nbsp; **requires**  friend is not already in user's set of outgoing friend requests, incoming friend requests, or friends; friend does not equal user  \
-&nbsp;&nbsp;&nbsp; **effects** adds friend to user's set of outgoing friend requests and adds user to friend's set of incoming friend requests
-
-&nbsp; acceptFriend(user: User, friend: User) \
-&nbsp;&nbsp;&nbsp; **requires** friend exists in user's set of incoming friend requests \
-&nbsp;&nbsp;&nbsp; **effects** removes friend from user's set of incoming friend requests and removes user from friend's set of outgoing friend requests; adds friend to user's set of friends and adds user to friend's set of friends
-
-&nbsp; validateFriendship(user: User, friend: User) \
-&nbsp;&nbsp;&nbsp; **requires** friend exists in user's set of friends
-
-&nbsp; endFriendship(user: User, friend: User) \
-&nbsp;&nbsp;&nbsp; **requires** friend exists in user's set of outgoing friend requests, incoming friend requests, or friends \
-&nbsp;&nbsp;&nbsp; **effects** removes friend from user's associated set and removes user from friend's associated set
-
-### 3) Posting
+### 2) Posting
 
 **concept** Posting [User]
 
@@ -182,7 +150,7 @@ The concept specifications, written in the standard form.
 &nbsp;&nbsp;&nbsp; **requires** post exists in set of posts and user is its creator \
 &nbsp;&nbsp;&nbsp; **effects** removes post from set of posts
 
-### 4) Wishlist
+### 3) Wishlist
 
 **concept** Wishlist [User]
 
@@ -219,6 +187,38 @@ The concept specifications, written in the standard form.
 &nbsp;&nbsp;&nbsp; **requires** place with given city, region, and country exists in the wishlist's set of places \
 &nbsp;&nbsp;&nbsp; **effects** removes place associated with given city, region, and country from the wishlist's set of places
 
+### 4) Friending
+
+**concept** Friending [User]
+
+**purpose** allows users to share special permissions with other users
+
+**principle** after a user requests to be another user's friend, that user can accept to create a friendship; the friendship can then be validated for mutual, special permissions between the friends; if at any point in the process one of the friends ends the friendship, all special permissions are lost between the users
+
+**state**
+
+&nbsp; a set of Users with \
+&nbsp;&nbsp;&nbsp; an outgoingFriendRequests set of Users \
+&nbsp;&nbsp;&nbsp; an incomingFriendRequests set of Users \
+&nbsp;&nbsp;&nbsp; a friends set of Users
+
+**actions**
+
+&nbsp; requestFriend(user: User, friend: User) \
+&nbsp;&nbsp;&nbsp; **requires**  friend is not already in user's set of outgoing friend requests, incoming friend requests, or friends; friend does not equal user  \
+&nbsp;&nbsp;&nbsp; **effects** adds friend to user's set of outgoing friend requests and adds user to friend's set of incoming friend requests
+
+&nbsp; acceptFriend(user: User, friend: User) \
+&nbsp;&nbsp;&nbsp; **requires** friend exists in user's set of incoming friend requests \
+&nbsp;&nbsp;&nbsp; **effects** removes friend from user's set of incoming friend requests and removes user from friend's set of outgoing friend requests; adds friend to user's set of friends and adds user to friend's set of friends
+
+&nbsp; validateFriendship(user: User, friend: User) \
+&nbsp;&nbsp;&nbsp; **requires** friend exists in user's set of friends
+
+&nbsp; endFriendship(user: User, friend: User) \
+&nbsp;&nbsp;&nbsp; **requires** friend exists in user's set of outgoing friend requests, incoming friend requests, or friends \
+&nbsp;&nbsp;&nbsp; **effects** removes friend from user's associated set and removes user from friend's associated set
+
 <!-- Some essential synchronizations. You do not need an exhaustive collection of synchronizations, but should capture (a) any essential design ideas that involve multiple concepts; (b) representative syncs for kinds of sync that are common throughout your application (such as syncs for access control or notification). -->
 
 ### Syncs
@@ -229,12 +229,12 @@ The concept specifications, written in the standard form.
 **then** Wishlist.create (user)
 
 **sync** makePost \
-**when** Request.makePost (user, title, city, region, country, start, end, destination, gallery) \
-**then** Posting.create (creator: user, title, city, region, country, start, end, destination, gallery)
+**when** Request.makePost (user, title, city, region, country, start, end, desription, gallery) \
+**then** Posting.create (creator: user, title, city, region, country, start, end, description, gallery)
 
 **sync** addToWishlist \
-**when** Request.addToWishlist (city, region, country) \
-**then** Wishlist.add (city, region, country)
+**when** Request.addToWishlist (wishlist, city, region, country) \
+**then** Wishlist.addPlace (wishlist, city, region, country)
 
 **sync** addFriend \
 **when** Request.addFriend (user, friend) \
@@ -265,16 +265,14 @@ The UserAuthentication concept allows users to login to their personal account, 
 
 ![UI Sketch 5](../assets/A2_UISketch5.png)
 
-![UI Sketch 6](../assets/A2_UISketch6.png)
-
 
 ## User Journey
 
 A user has recently completed an amazing week-long road trip across the US to end the summer. However, she's worried that she'll soon forget the details of her travels and the states that she visited along the way.
 
-She pulls up the Away app on her laptop, which opens to the Home page with a view of her past postcards. She clicks the "+" button to navigate to the editable Postcard page and begins filling in the form with the corresponding information about the first part of her trip (title: Road Trip Pt. 1, location: Nebraska, dates: 8/15/25 - 8/17/25). She reminisces about her favorite moments as she adds descriptions and photos, and then she completes the post and makes additional postcards for her next few road trip stops.
+She pulls up the Away app on her laptop, which opens to the Home page with a view of her past postcards. She clicks the "+" button to navigate to the editable Postcard page and begins filling in the form with the corresponding information about the first part of her trip (title: Road Trip Pt. 1; location: West Yellowstone, Montana, United States; dates: 8/15/25 - 8/16/25). She reminisces about her favorite moments as she adds descriptions and photos, and then she completes the post and makes additional postcards for her next few road trip stops.
 
-The user is disappointed that she didn't have the chance to explore Colorado, so she navigates to her Wishlist page, starts typing "Colorado," and selects Colorado from the dropdown that appears in order to add the location to her wishlist. Finally, she decides that she wants to share her travels with her cousin, so she navigates to the Friend Summary page, clicks on the "+" button beside the Incoming and Outgoing requests dropdowns, and types her cousin's username to send a friend request that will soon be accepted. The user is satisfied and relieved that she was able to record the memories from her cross-country trip for herself and others to always look back on.
+The user is disappointed that she didn't have the chance to explore New Mexico, so she navigates to her Wishlist page, starts typing "New Mexico," and selects New Mexico from the dropdown that appears in order to add the location to her wishlist. Finally, she decides that she wants to share her travels with her cousin, so she navigates to the Friend Summary page, clicks on the "+" button beside the Incoming and Outgoing requests dropdowns, and types her cousin's username to send a friend request that will soon be accepted. The user is satisfied and relieved that she was able to record the memories from her cross-country trip for herself and others to always look back on.
 
 
 <!-- ## TODO
