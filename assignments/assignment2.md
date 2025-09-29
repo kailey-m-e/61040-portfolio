@@ -53,7 +53,7 @@ A name: pick a fun and memorable name for your application.
 A motivation: summarize the problem that your application will solve in a sentence.
 Key features: explain up to three features in a brief narrative, ensuring that each has a name and a simple explanation of what the feature is; why it helps mitigate the problem; and how it impacts stakeholders. (See the note in the advice section on concepts vs. features.) -->
 
-**Away**: Away is a web application that lets users document and share their past trips and future travel aspirations with friends.
+**Away**: Away is a web application that lets users document and share their past trips and future travel aspirations.
 
 - **Postcards** - Postcards are the posts that a user creates about their travels, including details of the trip title, location, dates, its description, and related photos. Postcards allow users to not only record the places that they've been but also to archive details of their trips, from specific memories to favorite selfies and nature photos. In terms of stakeholders, Postcards allow the Traveler to document trips for their and their Partner's sake, and these travel details are also viewable by the Friend. However, Postcards generate competitive content and engagment that hurts the Developer.
 
